@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-//process.env.DB_URI
 const connectDatabase = () => {
     mongoose
-        .connect("mongodb://localhost:27017/Ecomerce", {
+        .connect("mongodb://localhost:27017/Ecomerce-basic-app", {
             useNewUrlParser: true,
             useUnifiedTopology: true,
 

@@ -1,20 +1,34 @@
 const express = require("express");
+require("dotenv").config({ path: "./config/.env" });
+const cookieParser = require("cookie-parser");
+var bodyParser = require('body-parser');
+var path = require('path');
 const app = express();
 
-require('dotenv').config({ path: "Backend/config/config" })
+
+app.use(express.json());
+app.use(cookieParser());
 
 
+//fetch data from the request
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.json())
+
 
 
 
 // Route Imports
-const product = require("./routes/productRoute");
+const product = require("./routes/product");
 const user = require("./routes/userRoute");
-// const order = require("./routes/orderRoute");
-// const payment = require("./routes/paymentRoute");
 
-app.use('/api', product);
+app.use("/api", product);
+app.use("/api", user);
+
+
 
 module.exports = app;
+
+
+
+
+
